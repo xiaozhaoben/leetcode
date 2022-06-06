@@ -16,6 +16,7 @@ public class jianzhi46 {
           this.val = val;
           this.left = left;
           this.right = right;
+
       }
   }
 
