@@ -1,12 +1,25 @@
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.PriorityQueue;
 
 /*
-* 剑指 Offer II 062. 实现 Trie (前缀树)
+* 剑指 Offer II 063. 替换单词
 * */
-public class jianzhi62 {
+public class jianzhi63 {
+
+    public String replaceWords(List<String> dictionary, String sentence) {
+        Trie trie = new Trie();
+        for(String str : dictionary){
+            trie.insert(str);
+        }
+        String[] words = sentence.split(" ");
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < words.length; i++){
+            words[i] = trie.searchStart(words[i]);
+            sb.append(words[i]);
+            sb.append(" ");
+        }
+        return sb.substring(0, sb.length() - 1).toString();
+
+    }
 
     class Trie {
 
@@ -31,26 +44,20 @@ public class jianzhi62 {
             node.isEnd = true;
         }
 
-        public boolean search(String word) {
-            Trie node = searchStart(word);
-            return node != null && node.isEnd;
-        }
-
-        public boolean startsWith(String prefix) {
-            return searchStart(prefix) != null;
-        }
-
-        public Trie searchStart(String word){
+        public String searchStart(String word){
             Trie node = this;
             for(int i = 0; i < word.length(); i++){
+                if(node.isEnd){
+                    return word.substring(0, i);
+                }
                 char a = word.charAt(i);
                 int index = a - 'a';
                 if(node.children[index] == null){
-                    return null;
+                    return word;
                 }
                 node = node.children[index];
             }
-            return node;
+            return word;
         }
 
     }
