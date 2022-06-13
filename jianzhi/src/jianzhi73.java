@@ -25,7 +25,7 @@ public class jianzhi73 {
             int cur = (piles[i] + k - 1) / k;
             sum += cur;
         }
-        return sum <= h ? true : false;
+        return sum <= h;
     }
 
 }
