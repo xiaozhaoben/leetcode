@@ -1,7 +1,7 @@
 /*
 * 剑指 Offer II 105. 岛屿的最大面积
 * */
-public class jianzhi104 {
+public class jianzhi105 {
 
     public int maxAreaOfIsland(int[][] grid) {
         int ans = 0;
