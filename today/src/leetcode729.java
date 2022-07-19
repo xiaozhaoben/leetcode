@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TreeSet;
 
 /*
-* 729. 我的日程安排表 I
-* */
+ * 729. 我的日程安排表 I
+ * */
 public class leetcode729 {
 
     class MyCalendar {
@@ -16,38 +15,38 @@ public class leetcode729 {
         }
 
         public boolean book(int start, int end) {
-            if (list.isEmpty()){
-                list.add( new int[]{start, end});
+            if (list.isEmpty()) {
+                list.add(new int[]{start, end});
                 return true;
             }
-            if(list.get(0)[0] >= end){
-                if(list.get(0)[0] == end){
+            if (list.get(0)[0] >= end) {
+                if (list.get(0)[0] == end) {
                     list.get(0)[0] = start;
-                }else{
+                } else {
                     list.add(0, new int[]{start, end});
                 }
                 return true;
             }
-            for(int i = 0; i < list.size(); i++){
-                if (start >= list.get(i)[0] && start < list.get(i)[1]){
+            for (int i = 0; i < list.size(); i++) {
+                if (start >= list.get(i)[0] && start < list.get(i)[1]) {
                     return false;
                 }
-                if (end > list.get(i)[0] && end <= list.get(i)[1]){
+                if (end > list.get(i)[0] && end <= list.get(i)[1]) {
                     return false;
                 }
-                if(start >= list.get(i)[1] && (i == list.size() - 1 || end <= list.get(i + 1)[0])){
-                    if (start == list.get(i)[1] && (i == list.size() - 1 || end == list.get(i + 1)[0])){
-                        if(i + 1 < list.size()){
+                if (start >= list.get(i)[1] && (i == list.size() - 1 || end <= list.get(i + 1)[0])) {
+                    if (start == list.get(i)[1] && (i == list.size() - 1 || end == list.get(i + 1)[0])) {
+                        if (i + 1 < list.size()) {
                             list.get(i)[1] = list.get(i + 1)[1];
                             list.remove(i + 1);
-                        }else{
+                        } else {
                             list.get(i)[1] = end;
                         }
-                    }else if(start == list.get(i)[1]){
+                    } else if (start == list.get(i)[1]) {
                         list.get(i)[1] = end;
-                    }else if ( i != list.size() - 1 && end == list.get(i + 1)[0]){
+                    } else if (i != list.size() - 1 && end == list.get(i + 1)[0]) {
                         list.get(i + 1)[0] = start;
-                    }else {
+                    } else {
                         list.add(i + 1, new int[]{start, end});
                     }
                     return true;
