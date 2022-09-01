@@ -1,7 +1,13 @@
-package designPattern.factoryPattern;
+package designPattern.abstractfactoryPattern;
 
-public class ShapeFactory {
 
+public class ShapeFactory extends AbstractFactory {
+    @Override
+    public Color getColor(String color) {
+        return null;
+    }
+
+    @Override
     public Shape getShape(String shapeType) {
         if (shapeType.equals("circle")) {
             return new Circle();
@@ -12,5 +18,4 @@ public class ShapeFactory {
         }
         return null;
     }
-
 }
